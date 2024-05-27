@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d02976c63be39459889688f7c3bbeb, type: 3}
+  m_Name: VoxelMapDB
+  m_EditorClassIdentifier: 
+  voxelMaterials:
+    m_keys: 00000000
+    m_values:
+    - {fileID: 11400000, guid: e79eb2eb11ab571469552a0fee404501, type: 2}
+  blocks:
+    m_keys: 00000000
+    m_values:
+    - {fileID: 5493879390127199686, guid: b6d38a492ad02694ca44cb42411c2e5d, type: 3}
