@@ -19,8 +19,8 @@ public class VoxelMap : MonoBehaviour,ISaveableMap
 
     private float chunkSize, mapsize, halfSize;
 
-    public int startingBlockID = 0;
-    public Vector3 startingPosition;
+    private int startingBlockID = 0;
+    private Vector3 startingPosition = Vector3.zero;
 
 	public PartDB partDB;
 	private (int, VoxelChunk.NeighbourID)[] neighbourDeltas; //Deltas to get the index of neighbours of the chunk.
@@ -35,6 +35,7 @@ public class VoxelMap : MonoBehaviour,ISaveableMap
     // Update is called once per frame
     void Start()
     {   
+        PlaceBlock(startingPosition,0,startingBlockID);
     }
 
 	private void Initialize(){
@@ -97,7 +98,7 @@ public class VoxelMap : MonoBehaviour,ISaveableMap
 	}
 
     public Vector3 SnapToGrid(Vector3 point){
-        Vector3 halfVoxelSize = Vector3.one * voxelSize/2;
+        Vector3 halfVoxelSize = (Vector3.one * voxelSize/2)+transform.position;
         
         Vector3 center = (point - halfVoxelSize)/voxelSize;
 
@@ -111,9 +112,9 @@ public class VoxelMap : MonoBehaviour,ISaveableMap
 
 	public Vector3Int MapCoordFromPoint(Vector3 point){
 
-		int centerX = (int) ((point.x + halfSize)/ voxelSize);
-        int centerY = (int) ((point.y + halfSize)/ voxelSize);
-        int centerZ = (int) ((point.z + halfSize)/ voxelSize);
+		int centerX = (int) ((point.x + halfSize- transform.position.x)/ voxelSize);
+        int centerY = (int) ((point.y + halfSize- transform.position.y)/ voxelSize);
+        int centerZ = (int) ((point.z + halfSize- transform.position.z)/ voxelSize);
 
         //Debug.Log("Center X Y Z: " + new Vector3Int(centerX,centerY,centerZ));
 

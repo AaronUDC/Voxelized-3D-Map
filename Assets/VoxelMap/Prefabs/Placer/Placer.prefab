@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2340734466965378903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3563909186553851763}
+  - component: {fileID: 3162608135694527443}
+  m_Layer: 0
+  m_Name: Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3563909186553851763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340734466965378903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6953989, y: -2.4968584, z: -10.949299}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3162608135694527443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340734466965378903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af56666bf5ede474bb4a84ba9b0687b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceLimits: {x: 0, y: 1000}
+  maxDistance: 10
+  placerMarkerPrefab: {fileID: 6096964064246957070, guid: 93d1042e4a04c7943bf6d6c102a7a1c8,
+    type: 3}
+  debugMode: 0
+  placerMarkerDebug: {fileID: 3015027266960166933, guid: 518ff9be066c6ef43940eafb9266b493,
+    type: 3}
+  voxelMap: {fileID: 0}
+  markerSpeed: 30
+  _partsDB: {fileID: 11400000, guid: 5e1f406647ae29e4eb3a15ad5ff187a1, type: 2}
+  selectedOption: 0
+  placeColor: {r: 1, g: 1, b: 1, a: 0}
+  destroyColor: {r: 1, g: 0.039215688, b: 0, a: 0}
+  buildMode: 1
+  placementMode: 1
+  blockRotation: 0
+  rotationChange: 45
