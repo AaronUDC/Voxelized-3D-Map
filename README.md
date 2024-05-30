@@ -1,6 +1,10 @@
 
+
 # Voxelized-3D-Map
 This is the project for a 3D voxelized map on Unity 2022.3.9f1. It uses an atlas of 3D parts to build a voxel mesh and has support for placing other gameobjects on the grid.
+
+![Imagen](https://github.com/AaronUDC/Voxelized-3D-Map/assets/103149928/2ed03ff9-6e36-4cdb-ac7c-88894e5c38c1)
+
 
 ## Terminology
 Before explaining this project characteristics, there are some terms that need to be defined.
@@ -14,7 +18,7 @@ Before explaining this project characteristics, there are some terms that need t
 **Block**: It is a 3D part that is snapped to the grid of **Voxels**. It can be rotated only on the vertical axis, and it can be used for various purposes, from just static decoration parts, to more complex parts with functionality.
 
 ## Playing with the tool
-On the project, inside VoxelMap/Scenes, there is a sample scene already set for editing a map.
+On the project, inside *VoxelMap/Scenes*, there is a sample scene already set for editing a map.
 After hitting play, the map will be initialize. We can control the camera by holding right click and using the WASD keys or moving the mouse.
 
 ### Build mode GUI
@@ -40,17 +44,18 @@ After hitting play, the map will be initialize. We can control the camera by hol
  
  **PartDB**: A scriptable object where we will store the list of the **VoxelMaterials** and **Blocks** our map will be able to use.
 ###  2. Setting up the parts database
-A sample database is already stored in the VoxelMap folder which already contains a VoxelMaterial and a Block.
-This scriptable object contains two dictionaries that stores an unique identifier for each VoxelMaterial and Block. 
-New parts can be added on the inspector of the sample database, or we can create our PartDB adding an asset under ScriptableObjects/VoxelMap.
+An example database is already stored in the VoxelMap folder which already contains a **VoxelMaterial** and a **Block**.
+This scriptable object contains two dictionaries that stores an unique identifier for each **VoxelMaterial** and **Block**. 
+New parts can be added on the inspector of the database, or we can create our **PartDB** by adding an asset under *ScriptableObjects/VoxelMap*.
   
 ### 3. Creating new parts
 #### Blocks
-To create a new block, we just need to add the **Block** script (Under VoxelMap/Script/Blocks) to the thing that we want to be snapped into the grid. The origin of the GameObject containing the script will be snapped to the **Voxel** it is placed into.
+To create a new block, we just need to add the **Block** script (Under *VoxelMap/Script/Blocks*) to the thing that we want to be snapped into the grid. The origin of the GameObject containing the script will be snapped to the **Voxel** it is placed into.
 Try to make the object around the same size as the voxel size of the map for best results.
 #### Voxel Materials
-The VoxelMaterial, just like the Parts database, is a ScriptableObject, and can be created the same way.
-To set up a VoxelMaterial, we need to prepare a total of 34 meshes in our 3D software of choice. Each mesh mus be named accordingly. A sample is available at (VoxelMap/Models), remember to allow read/write on the import settings of the model.
+The **VoxelMaterial**, just like the Parts database, is a ScriptableObject, and can be created the same way.
+To set up a **VoxelMaterial**, we need to prepare a total of 34 meshes in our 3D software of choice and each mesh mus be named accordingly. An example is available at (*VoxelMap/Models*), remember to allow read/write on the import settings of the model in order to the mesh merging to work. 
+To fill the data on the scriptable object more easily, there is a button to automatically do it by providing a "tileset" of parts, like the one from the example. A warning will pop up for any part not named correctly on the set.
 
 ### 4. Map editing and save and load
-To be able to edit the map, or save it and load it, we need to add a Placer and a SaveLoad prefab on the scene. After placing them in the scene, add the VoxelMap on the inspector of each object. 
+To be able to edit the map, or save and load it, we need to add a Placer or a SaveLoad prefab on the scene. After placing them in the scene, add the **VoxelMap** on the inspector of each object. And each GUI should pop up when playing. Of course, you can also implement your own system.
