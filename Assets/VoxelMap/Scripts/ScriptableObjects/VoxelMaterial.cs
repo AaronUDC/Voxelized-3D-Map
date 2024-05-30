@@ -1,30 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "VoxelMaterial", menuName = "ScriptableObjects/VoxelMap/VoxelMaterial", order = 1)]
 public class VoxelMaterial : ScriptableObject
 {
-/*  private static readonly string[] partNames = new string[]
-    {
-        "0.01",
-        "1.01", "1.02",
-        "2.01", "2.02", "2.03",
-        "3.01", "3.02", "3.03", "3.04",
-        "4.01", "4.02", "4.03", "4.04", "4.05", "4.06", "4.07", "4.08",
-        "5.01", "5.02", "5.03", "5.04", "5.05", "5.06", "5.07", "5.08",
-        "6.01", "6.02", "6.03", "6.04", "6.05", "6.06", "6.07", "6.08",
-        "7.01","7.02",
-        "8.01"
-        };
- */
+
     //MARK: Options
+	
 	[SerializeField]
-    private bool useAtlas;
-	[SerializeField]
-    private GameObject partAtlas;
+    public GameObject tileset;
 
     //MARK: Data
 
@@ -33,15 +21,15 @@ public class VoxelMaterial : ScriptableObject
         public Mesh mesh;
         public int[] materialIndexes;
 
-        public PartData(Mesh mesh, int[] materialIndex){
+        public PartData(Mesh mesh, int[] materialIndexes){
             this.mesh = mesh;
-            this.materialIndexes = materialIndex;
+            this.materialIndexes = materialIndexes;
         }
     }
 
     [Serializable]
     public class PartsDictionary : SerializableDictionary<string,PartData> {}
-
+	
     public PartsDictionary basicParts;
 
     public Material[] materials;
@@ -49,10 +37,10 @@ public class VoxelMaterial : ScriptableObject
 
     //MARK: Load part Atlas
 
-	public void LoadPartAtlas(){
-		if(useAtlas) LoadPartAtlas(partAtlas);
+	public void LoadTileset(){
+		LoadTileset(tileset);
 	}
-    public void LoadPartAtlas(GameObject atlas){
+    public void LoadTileset(GameObject atlas){
 
         ArrayList materialsArray = new ArrayList();
         MeshFilter[] parts = atlas.transform.GetComponentsInChildren<MeshFilter>();
@@ -61,24 +49,29 @@ public class VoxelMaterial : ScriptableObject
 
         foreach( MeshFilter part in parts){
 
-            //Materials
-            MeshRenderer meshRenderer = part.GetComponent<MeshRenderer>();
-            int[] materialsIndexes = new int[meshRenderer.sharedMaterials.Length];
+			if(ChunkBuilder.PART_NAMES.Contains(part.name)){
 
-            for(int i = 0; i < materialsIndexes.Length; i++){
+				//Materials
+				MeshRenderer meshRenderer = part.GetComponent<MeshRenderer>();
+				int[] materialsIndexes = new int[meshRenderer.sharedMaterials.Length];
 
-                int materialArrayIndex = SearchForMaterial(materialsArray, meshRenderer.sharedMaterials[i].name);
+				for(int i = 0; i < materialsIndexes.Length; i++){
 
-                if(materialArrayIndex == -1){
-                    materialsArray.Add(meshRenderer.sharedMaterials[i]);
-                    materialArrayIndex = materialsArray.Count - 1;
+					int materialArrayIndex = SearchForMaterial(materialsArray, meshRenderer.sharedMaterials[i].name);
 
-                }
-                materialsIndexes[i] = materialArrayIndex;
-            }
-            PartData partData = new PartData(part.sharedMesh,materialsIndexes);
-            basicParts.Add(part.transform.name,partData);
-        }
+					if(materialArrayIndex == -1){
+						materialsArray.Add(meshRenderer.sharedMaterials[i]);
+						materialArrayIndex = materialsArray.Count - 1;
+
+					}
+					materialsIndexes[i] = materialArrayIndex;
+				}
+				PartData partData = new PartData(part.sharedMesh,materialsIndexes);
+				basicParts.Add(part.transform.name,partData);
+			}else{
+				Debug.LogWarning("Part: " + part.name + " not recognized.");
+			}
+		}
 
 		this.materials = materialsArray.ToArray(typeof(Material)) as Material[];
 

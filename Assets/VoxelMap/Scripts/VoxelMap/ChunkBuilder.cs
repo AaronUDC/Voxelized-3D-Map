@@ -5,6 +5,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public static class ChunkBuilder{
+	
+	public static readonly string[] PART_NAMES = new string[]
+    {
+        "0.0",
+        "1.01", "1.02",
+        "2.01", "2.02", "2.03",
+        "3.01", "3.02", "3.03", "3.04",
+        "4.01", "4.02", "4.03", "4.04", "4.05", "4.06", "4.07", "4.08",
+        "5.01", "5.02", "5.03", "5.04", "5.05", "5.06", "5.07", "5.08",
+        "6.01", "6.02", "6.03", "6.04", "6.05", "6.06", "6.07", "6.08",
+        "7.01","7.02",
+        "8.01"
+    };
 
     [Serializable]
     public struct PartInfo{

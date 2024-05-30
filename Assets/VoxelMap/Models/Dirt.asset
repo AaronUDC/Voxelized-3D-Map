@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb419b4e9f9aaec49b5b286e0707939c, type: 3}
   m_Name: Dirt
   m_EditorClassIdentifier: 
-  useAtlas: 1
-  partAtlas: {fileID: 919132149155446097, guid: bb4f151ab0890e848a238661c4298f11,
-    type: 3}
+  tileset: {fileID: 919132149155446097, guid: bb4f151ab0890e848a238661c4298f11, type: 3}
   basicParts:
     m_keys:
     - 1.01
