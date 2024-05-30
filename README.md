@@ -51,10 +51,13 @@ New parts can be added on the inspector of the database, or we can create our **
 ### 3. Creating new parts
 #### Blocks
 To create a new block, we just need to add the **Block** script (Under *VoxelMap/Script/Blocks*) to the thing that we want to be snapped into the grid. The origin of the GameObject containing the script will be snapped to the **Voxel** it is placed into.
+
 Try to make the object around the same size as the voxel size of the map for best results.
+
 #### Voxel Materials
 The **VoxelMaterial**, just like the Parts database, is a ScriptableObject, and can be created the same way.
 To set up a **VoxelMaterial**, we need to prepare a total of 34 meshes in our 3D software of choice and each mesh mus be named accordingly. An example is available at (*VoxelMap/Models*), remember to allow read/write on the import settings of the model in order to the mesh merging to work. 
+
 To fill the data on the scriptable object more easily, there is a button to automatically do it by providing a "tileset" of parts, like the one from the example. A warning will pop up for any part not named correctly on the set.
 
 ### 4. Map editing and save and load
