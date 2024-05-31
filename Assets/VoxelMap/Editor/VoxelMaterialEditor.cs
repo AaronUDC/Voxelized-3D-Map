@@ -11,7 +11,7 @@ public class VoxelMaterialEditor : Editor{
 	SerializedProperty partsProperty;
 	SerializedProperty materialsProperty;
 
-	bool showData = false;
+	//bool showData = false;
 	void OnEnable()
     {
         // Fetch the objects from the GameObject script to display in the inspector
