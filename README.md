@@ -1,5 +1,6 @@
 
 
+
 # Voxelized-3D-Map
 This is the project for a 3D voxelized map on Unity 2022.3.9f1. It uses an atlas of 3D parts to build a voxel mesh and has support for placing other gameobjects on the grid.
 
@@ -62,3 +63,6 @@ To fill the data on the scriptable object more easily, there is a button to auto
 
 ### 4. Map editing and save and load
 To be able to edit the map, or save and load it, we need to add a Placer or a SaveLoad prefab on the scene. After placing them in the scene, add the **VoxelMap** on the inspector of each object. And each GUI should pop up when playing. Of course, you can also implement your own system.
+
+## Credits
+Serializable Dictionary licensed under MIT License [Copyright (c) 2017 Mathieu Le Ber](https://github.com/azixMcAze/Unity-SerializableDictionary)
